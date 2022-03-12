@@ -6,7 +6,7 @@ const Product = require('../models/product');
 
 
 
-router.get('/', async (req, res) => {
+router.get('/products', async (req, res) => {
     try {
         const product = await Product.find();
 
@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 // get element by id 
-router.get('/:id', async (req, res) => {
+router.get('/products/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
 
@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
 
 
 // delete element by id 
-router.patch('/:id', async (req, res) => {
+router.patch('/products/:id', async (req, res) => {
     try {
         const product = await Product.updateOne({ "_id": req.params.id }, { "title": req.body.title });
 
@@ -44,7 +44,7 @@ router.patch('/:id', async (req, res) => {
 
 
 // delete element by id 
-router.delete('/:id', async (req, res) => {
+router.delete('/products/:id', async (req, res) => {
     try {
         const product = await Product.deleteOne({ "_id": req.params.id });
 
