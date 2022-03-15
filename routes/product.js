@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     try {
         const product = await Product.find();
 
-        res.json(product);
+        res.status(200).json(product);
 
     } catch (err) {
         console.log(err);
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
 
-        res.json(product);
+        res.status(200).json(product);
 
     } catch (err) {
         console.log(err);
@@ -69,7 +69,7 @@ router.post('/', (req, res) => {
 
     product.save().then((data) => {
 
-        res.json({
+        res.status(201).json({
             "message": "product created succefully",
             "data": data
         })
