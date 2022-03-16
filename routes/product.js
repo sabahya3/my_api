@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
 // delete element by id 
 router.patch('/:id', async (req, res) => {
     try {
-        const product = await Product.updateOne({ "_id": req.params.id }, { "title": req.body.title, "image": req.body.image, "desc": req.body.des });
+        const product = await Product.updateOne({ "_id": req.params.id }, { "title": req.body.title, "image": req.body.image, "desc": req.body.des, "price": req.body.price });
 
         res.json(product);
 
@@ -64,7 +64,8 @@ router.post('/', (req, res) => {
     const product = new Product({
         title: req.body.title,
         desc: req.body.desc,
-        image: req.body.image
+        image: req.body.image,
+        price: req.body.price
     });
 
     product.save().then((data) => {
